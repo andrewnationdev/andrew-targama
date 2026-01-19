@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function POST(request) {
+export async function POST(request: { json: () => PromiseLike<{ text: any; target_lang: any; }> | { text: any; target_lang: any; }; }) {
   try {
     const { text, target_lang } = await request.json();
 
