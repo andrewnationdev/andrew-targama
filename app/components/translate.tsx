@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import handleTranslate from "../core/translation";
-import { ArrowLeftRight,Languages } from "lucide-react"
+import { ArrowLeftRight,Languages, Star } from "lucide-react"
+import { ILanguage } from "../types/types";
+import { languages } from "../schema/schema";
 
 export default function Translate() {
     const [input, setInput] = useState<string>("");
     const [target, setTarget] = useState<string>("pt-BR");
     const [result, setResult] = useState<string>("");
+    const [detectedLanguage, setDetectedLanguage] = useState<string>("");
 
     async function handleClick() {
         const res = await handleTranslate({
@@ -19,26 +22,48 @@ export default function Translate() {
             const transl = res.translations[0].text;
 
             setResult(transl);
+
+            if (res.translations[0].detected_source_language) {
+                let detected = res.translations[0].detected_source_language;
+
+                for (let lang of languages) {
+                    if(lang.code.toLowerCase() === detected.toLowerCase()){
+                        detected = lang.readableName;
+                        break;
+                    }
+                }
+
+                setDetectedLanguage(detected);
+            }
         }
 
         console.log(res)
     }
 
-    return <div className="flex flex-col max-w-4xl mx-auto my-10 p-6 bg-white rounded-xl shadow-lg border border-gray-100">
-        <div className="flex w-full gap-4 justify-between p-4 items-center">
+    async function handleReverse(){
+        setInput(result)
+        setResult("")
+    }
+
+    return <div className="flex flex-col max-w-4xl mx-auto my-4 p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+        <div className="flex w-full gap-4 justify-between p-2 items-center">
+            <span>Idioma Detectado:</span>
             <span>Idioma de Destino:</span>
+        </div>
+        <div className="flex w-full gap-4 justify-between p-2 items-center">
+            <span>{detectedLanguage}</span>
             <select
                 value={target}
                 onChange={(e) => setTarget(e.target.value)}
                 className="p-3 bg-gray-50 border border-gray-200 rounded-lg appearance-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
             >
-                <option value="ar">Árabe Clássico</option>
-                <option value="en-US">Inglês(EUA)</option>
-                <option value="en-GB">Inglês(Reino Unido)</option>
-                <option value="fr">Francês</option>
-                <option value="ja">Japonês</option>
-                <option value="pt-BR">Português(Brasil)</option>
-                <option value="pt-PT">Português(Portugal)</option>
+                {[...languages]
+                    .sort((a, b) => a.readableName.localeCompare(b.readableName))
+                    .map((lang: ILanguage) => (
+                        <option key={lang.code} value={lang.code}>
+                            {lang.readableName}
+                        </option>
+                    ))}
             </select>
         </div>
         <div className="flex flex-col md:flex-row gap-6">
@@ -65,6 +90,7 @@ export default function Translate() {
         <div className="flex justify-around w-[60%] mx-auto">
             <button
                 onClick={handleClick}
+                title="Traduzir"
                 className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
             >
                 <Languages />
@@ -72,6 +98,15 @@ export default function Translate() {
 
             <button
                 onClick={handleClick}
+                title="Favoritar Tradução"
+                className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
+            >
+                <Star />
+            </button>
+
+            <button
+                onClick={handleReverse}
+                title="Inverter"
                 className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
             >
                 <ArrowLeftRight />
