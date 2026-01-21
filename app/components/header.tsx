@@ -11,10 +11,10 @@ export default function Header(){
             <Link href="/" title="Início">
                 <House size="25"/>
             </Link>
-            <Link href="/" title="Traduções Salvas">
+            <Link href="/favorites" title="Traduções Salvas">
                 <Book size="25"/>
             </Link>
-            <Link href="/" title="Sobre">
+            <Link href="/about" title="Sobre">
                 <InfoIcon size="25"/>
             </Link>
         </div>

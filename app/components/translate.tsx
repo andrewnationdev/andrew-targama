@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import handleTranslate from "../core/translation";
-import { ArrowLeftRight,Languages, Star } from "lucide-react"
 import { ILanguage } from "../types/types";
 import { languages } from "../schema/schema";
+import ActionButtonsRow from "./action-buttons-row";
 
 export default function Translate() {
     const [input, setInput] = useState<string>("");
-    const [target, setTarget] = useState<string>("pt-BR");
+    const [target, setTarget] = useState<string>("en");
     const [result, setResult] = useState<string>("");
-    const [detectedLanguage, setDetectedLanguage] = useState<string>("");
+    const [detectedLanguage, setDetectedLanguage] = useState<string>("---");
 
-    async function handleClick() {
+    async function handleTranslateButton() {
         const res = await handleTranslate({
             text: input,
             target: target
@@ -27,7 +27,7 @@ export default function Translate() {
                 let detected = res.translations[0].detected_source_language;
 
                 for (let lang of languages) {
-                    if(lang.code.toLowerCase() === detected.toLowerCase()){
+                    if (lang.code.toLowerCase() === detected.toLowerCase()) {
                         detected = lang.readableName;
                         break;
                     }
@@ -40,10 +40,12 @@ export default function Translate() {
         console.log(res)
     }
 
-    async function handleReverse(){
+    async function handleReverseButton() {
         setInput(result)
         setResult("")
     }
+
+    function handleFavoriteButton() { }
 
     return <div className="flex flex-col max-w-4xl mx-auto my-4 p-4 bg-white rounded-xl shadow-lg border border-gray-100">
         <div className="flex w-full gap-4 justify-between p-2 items-center">
@@ -87,30 +89,6 @@ export default function Translate() {
             </div>
         </div>
 
-        <div className="flex justify-around w-[60%] mx-auto">
-            <button
-                onClick={handleClick}
-                title="Traduzir"
-                className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
-            >
-                <Languages />
-            </button>
-
-            <button
-                onClick={handleClick}
-                title="Favoritar Tradução"
-                className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
-            >
-                <Star />
-            </button>
-
-            <button
-                onClick={handleReverse}
-                title="Inverter"
-                className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
-            >
-                <ArrowLeftRight />
-            </button>
-        </div>
+        <ActionButtonsRow handleTranslateButton={handleTranslateButton} handleFavoriteButton={handleFavoriteButton} handleReverseButton={handleReverseButton} />
     </div>
 }
