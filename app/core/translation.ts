@@ -1,7 +1,4 @@
-interface ITranslation {
-    text: string;
-    target: string;
-}
+import { ITranslation } from "../types/types";
 
 export default async function handleTranslate(args:ITranslation){
     const res = await fetch('/api/translate', {
