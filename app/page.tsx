@@ -3,8 +3,8 @@ import Translate from "./components/translate"
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex text-black min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white sm:items-start">
+    <div className="flex min-h-screen items-center justify-center font-sans bg-slate-700">
+      <main className="flex text-black w-full max-w-3xl flex-col items-center justify-between px-16 sm:items-start">
         <Translate/>
       </main>
     </div>

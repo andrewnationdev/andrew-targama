@@ -7,7 +7,7 @@ export default function ActionButtonsRow(props:IActionButtonsRowProps){
             <button
                 onClick={props.handleTranslateButton}
                 title="Traduzir"
-                className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
+                className="mt-6 w-full md:w-auto px-8 py-3 bg-sky-700 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
             >
                 <Languages />
             </button>
@@ -15,7 +15,7 @@ export default function ActionButtonsRow(props:IActionButtonsRowProps){
             <button
                 onClick={props.handleFavoriteButton}
                 title="Favoritar Tradução"
-                className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
+                className="mt-6 w-full md:w-auto px-8 py-3 bg-sky-700 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
             >
                 <Star />
             </button>
@@ -23,7 +23,7 @@ export default function ActionButtonsRow(props:IActionButtonsRowProps){
             <button
                 onClick={props.handleReverseButton}
                 title="Inverter"
-                className="mt-6 w-full md:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
+                className="mt-6 w-full md:w-auto px-8 py-3 bg-sky-700 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
             >
                 <ArrowLeftRight />
             </button>
