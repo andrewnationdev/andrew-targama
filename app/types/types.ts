@@ -15,3 +15,9 @@ export interface ITranslation {
     text: string;
     target: string;
 }
+
+export interface IFavoritesItem {
+    key: string;
+    translation: string;
+    index?: number;
+}
