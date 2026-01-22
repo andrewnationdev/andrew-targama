@@ -87,7 +87,7 @@ export default function Translate() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Digite aqui..."
-                    className="w-full h-48 p-4 bg-gray-50 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-800 placeholder-gray-400 transition-all"
+                    className="w-full h-48 p-4 bg-gray-800 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-grey-100 placeholder-gray-400 transition-all"
                 ></textarea>
             </div>
 
@@ -96,7 +96,7 @@ export default function Translate() {
                     value={result}
                     readOnly
                     placeholder="Tradução aparecerá aqui..."
-                    className="w-full h-48 p-4 bg-blue-50 border border-blue-100 rounded-lg resize-none text-gray-800 focus:outline-none"
+                    className="w-full h-48 p-4 bg-blue-800 border border-blue-100 rounded-lg resize-none text-blue-100 focus:outline-none"
                 ></textarea>
             </div>
         </div>
