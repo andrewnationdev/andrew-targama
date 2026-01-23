@@ -13,8 +13,6 @@ export function addToFavorites(item: IFavoritesItem): boolean {
         localStorage.setItem("favorites", JSON.stringify([...JSON.parse(localStorage.getItem("favorites") || "[]"), item]));
         return true;
     }
-
-    return false;
 }
 
 export function removeFromFavorites(item: IFavoritesItem): boolean {

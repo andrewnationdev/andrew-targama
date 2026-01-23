@@ -17,7 +17,7 @@ export interface ITranslation {
 }
 
 export interface IFavoritesItem {
-    key: string;
+    text: string;
     translation: string;
     index?: number;
 }
