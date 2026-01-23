@@ -1,16 +1,16 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import FavoritesCard from "../components/favorites-card";
-import { retrieveFromFavorites } from "../utils/utils";
-import { IFavoritesItem } from "../types/types";
+import useStore from "../store/useStore";
 
 export default function FavoritesPage() {
-    const [items, setItems] = useState<IFavoritesItem[]>([]);
-    
-    useEffect(()=>{
-        const favorites = retrieveFromFavorites();
-        setItems(favorites);
-    },[])
+    const items = useStore((s) => s.favorites);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            useStore.getState().loadFromStorage()
+        }
+    }, [])
 
     return <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-slate-700">
         <span>Favoritos</span>

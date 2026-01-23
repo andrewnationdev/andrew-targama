@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import handleTranslate from "../core/translation";
 import { ILanguage } from "../types/types";
 import { languages } from "../schema/schema";
 import ActionButtonsRow from "./action-buttons-row";
-import { addToFavorites, showErrorToast, showSuccessToast } from "../utils/utils";
+import { showErrorToast, showSuccessToast } from "../utils/utils";
+import useStore, { addToFavorites } from "../store/useStore";
 
 export default function Translate() {
     const [input, setInput] = useState<string>("");
@@ -47,17 +48,20 @@ export default function Translate() {
     }
 
     function handleFavoriteButton() {
-        const res = addToFavorites({
-            text: input,
-            translation: result
-        })
+        const res = addToFavorites({ text: input, translation: result })
 
-        if(res){
+        if (res) {
             showSuccessToast("Adicionado aos favoritos com sucesso!");
         } else {
             showErrorToast("Erro ao adicionar aos favoritos.");
         }
     }
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            useStore.getState().loadFromStorage()
+        }
+    }, [])
 
     return <div className="flex flex-col md:max-w-4xl mx-auto my-4 p-4 bg-blue-950 text-white rounded-xl shadow-lg border border-[5px] border-blue-800">
         <div className="flex w-full gap-4 justify-between p-2 items-center">

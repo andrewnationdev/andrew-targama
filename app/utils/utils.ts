@@ -1,31 +1,4 @@
 import { toast } from "react-toastify";
-import { IFavoritesItem } from "../types/types";
-
-export function addToFavorites(item: IFavoritesItem): boolean {
-    if (checkIfFavoritesExist()) {
-        let arr = JSON.parse(localStorage.getItem("favorites")!);
-
-        arr.push(item);
-
-        localStorage.setItem("favorites", JSON.stringify(arr));
-        return true;
-    } else {
-        localStorage.setItem("favorites", JSON.stringify([...JSON.parse(localStorage.getItem("favorites") || "[]"), item]));
-        return true;
-    }
-}
-
-export function removeFromFavorites(item: IFavoritesItem): boolean {
-    return false;
-}
-
-export function retrieveFromFavorites(): IFavoritesItem[] {
-    return checkIfFavoritesExist() ? JSON.parse(localStorage.getItem("favorites")!) : [];
-}
-
-function checkIfFavoritesExist(): boolean {
-    return (localStorage.getItem("favorites") ? true : false);
-}
 
 export function showSuccessToast(message: string) {
     toast.success(message, {
