@@ -48,7 +48,7 @@ export default function Translate() {
 
     function handleFavoriteButton() {
         const res = addToFavorites({
-            key: input,
+            text: input,
             translation: result
         })
 
@@ -59,7 +59,7 @@ export default function Translate() {
         }
     }
 
-    return <div className="flex flex-col max-w-4xl mx-auto my-4 p-4 bg-blue-950 text-white rounded-xl shadow-lg border border-[5px] border-blue-800">
+    return <div className="flex flex-col md:max-w-4xl mx-auto my-4 p-4 bg-blue-950 text-white rounded-xl shadow-lg border border-[5px] border-blue-800">
         <div className="flex w-full gap-4 justify-between p-2 items-center">
             <span>Idioma Detectado:</span>
             <span>Idioma de Destino:</span>
@@ -87,7 +87,7 @@ export default function Translate() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Digite aqui..."
-                    className="w-full h-48 p-4 bg-gray-800 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-grey-100 placeholder-gray-400 transition-all"
+                    className="w-full h-48 p-4 bg-gray-800 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-100 placeholder-gray-400 transition-all"
                 ></textarea>
             </div>
 
