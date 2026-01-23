@@ -9,6 +9,8 @@ export interface IActionButtonsRowProps {
     handleTranslateButton: () => Promise<void>;
     handleFavoriteButton: () => void;
     handleReverseButton: () => Promise<void>;
+    enableTranslateButton: boolean;
+    enableFavoriteButton?: boolean;
 }
 
 export interface ITranslation {

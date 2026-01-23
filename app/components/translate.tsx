@@ -12,6 +12,7 @@ export default function Translate() {
     const [input, setInput] = useState<string>("");
     const [target, setTarget] = useState<string>("en");
     const [result, setResult] = useState<string>("");
+    const [previousInput, setPreviousInput] = useState<string>("");
     const [detectedLanguage, setDetectedLanguage] = useState<string>("---");
 
     async function handleTranslateButton() {
@@ -24,6 +25,7 @@ export default function Translate() {
             const transl = res.translations[0].text;
 
             setResult(transl);
+            setPreviousInput(input);
 
             if (res.translations[0].detected_source_language) {
                 let detected = res.translations[0].detected_source_language;
@@ -105,6 +107,11 @@ export default function Translate() {
             </div>
         </div>
 
-        <ActionButtonsRow handleTranslateButton={handleTranslateButton} handleFavoriteButton={handleFavoriteButton} handleReverseButton={handleReverseButton} />
+        <ActionButtonsRow 
+        enableTranslateButton={input.length > 0 && target != "" && input != previousInput}
+        enableFavoriteButton={result.length > 0}
+        handleTranslateButton={handleTranslateButton} 
+        handleFavoriteButton={handleFavoriteButton} 
+        handleReverseButton={handleReverseButton} />
     </div>
 }

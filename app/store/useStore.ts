@@ -24,7 +24,7 @@ const useStore = create<FavoritesState>((set, get) => ({
   addToFavorites: (item) => {
     try {
       const current = get().favorites
-      const exists = current.some((f) => (f as any).id === (item as any).id)
+      const exists = current.some((f) => f.text === item.text && f.translation === item.translation)
       if (exists) return false
       const updated = [...current, item]
       if (typeof window !== 'undefined') localStorage.setItem('favorites', JSON.stringify(updated))
@@ -36,7 +36,7 @@ const useStore = create<FavoritesState>((set, get) => ({
   },
   removeFromFavorites: (item) => {
     try {
-      const updated = get().favorites.filter((f) => (f as any).id !== (item as any).id)
+      const updated = get().favorites.filter((f) => !(f.text === item.text && f.translation === item.translation))
       if (typeof window !== 'undefined') localStorage.setItem('favorites', JSON.stringify(updated))
       set({ favorites: updated })
       return true

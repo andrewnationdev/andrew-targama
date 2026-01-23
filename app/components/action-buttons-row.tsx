@@ -7,6 +7,7 @@ export default function ActionButtonsRow(props: IActionButtonsRowProps) {
         <button
             onClick={props.handleTranslateButton}
             title="Traduzir"
+            disabled={props.enableTranslateButton}
             className="mt-6 w-full md:w-auto px-8 py-3 bg-sky-700 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
         >
             <Languages />
@@ -14,6 +15,7 @@ export default function ActionButtonsRow(props: IActionButtonsRowProps) {
 
         <button
             onClick={props.handleFavoriteButton}
+            disabled={props.enableFavoriteButton}
             title="Favoritar Tradução"
             className="mt-6 w-full md:w-auto px-8 py-3 bg-sky-700 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
         >
@@ -22,6 +24,7 @@ export default function ActionButtonsRow(props: IActionButtonsRowProps) {
 
         <button
             onClick={props.handleReverseButton}
+            disabled={!props.enableTranslateButton}
             title="Inverter"
             className="mt-6 w-full md:w-auto px-8 py-3 bg-sky-700 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 ease-in-out"
         >
