@@ -3,7 +3,7 @@ import { ArrowLeftRight,Languages, Star } from "lucide-react"
 import { IActionButtonsRowProps } from "../types/types"
 
 export default function ActionButtonsRow(props:IActionButtonsRowProps){
-    return         <div className="flex justify-around w-[60%] mx-auto">
+    return         <div className="flex justify-around gap-2 md:w-[60%] mx-auto">
             <button
                 onClick={props.handleTranslateButton}
                 title="Traduzir"
