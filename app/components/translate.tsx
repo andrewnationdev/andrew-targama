@@ -12,36 +12,44 @@ export default function Translate() {
     const [input, setInput] = useState<string>("");
     const [target, setTarget] = useState<string>("en");
     const [result, setResult] = useState<string>("");
-    const [previousInput, setPreviousInput] = useState<string>("");
+    const [state, setState] = useState("A tradução será exibida aqui.");
     const [detectedLanguage, setDetectedLanguage] = useState<string>("---");
 
     async function handleTranslateButton() {
-        const res = await handleTranslate({
-            text: input,
-            target: target
-        });
+        try {
+            setState("Traduzindo...");
 
-        if (res.translations && res.translations.length > 0) {
-            const transl = res.translations[0].text;
+            const res = await handleTranslate({
+                text: input,
+                target: target
+            });
 
-            setResult(transl);
-            setPreviousInput(input);
+            if (res.translations && res.translations.length > 0) {
+                const transl = res.translations[0].text;
 
-            if (res.translations[0].detected_source_language) {
-                let detected = res.translations[0].detected_source_language;
+                setResult(transl);
 
-                for (let lang of languages) {
-                    if (lang.code.toLowerCase() === detected.toLowerCase()) {
-                        detected = lang.readableName;
-                        break;
+                if (res.translations[0].detected_source_language) {
+                    let detected = res.translations[0].detected_source_language;
+
+                    for (let lang of languages) {
+                        if (lang.code.toLowerCase() === detected.toLowerCase()) {
+                            detected = lang.readableName;
+                            break;
+                        }
                     }
+
+                    setDetectedLanguage(detected);
                 }
-
-                setDetectedLanguage(detected);
+            } else {
+                setState("Erro ao traduzir. Tente novamente mais tarde.");
             }
-        }
 
-        console.log(res)
+            //console.log(res)
+        } catch (err) {
+            setState("Erro ao traduzir. Tente novamente mais tarde.");
+            console.error(err);
+        }
     }
 
     async function handleReverseButton() {
@@ -108,7 +116,7 @@ export default function Translate() {
                     <textarea
                         value={result}
                         readOnly
-                        placeholder="Tradução aparecerá aqui..."
+                        placeholder={state}
                         aria-label="Resultado da tradução"
                         className="w-full min-h-[10rem] md:min-h-[14rem] p-4 bg-slate-600/30 border border-slate-500 rounded-lg resize-none text-slate-50 focus:outline-none transition-all duration-150 shadow-sm"
                     ></textarea>
