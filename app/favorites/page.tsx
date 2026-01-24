@@ -12,12 +12,21 @@ export default function FavoritesPage() {
         }
     }, [])
 
-    return <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-slate-700">
-        <span>Favoritos</span>
-        <div className="flex flex-col max-w-4xl mx-auto my-4 p-4 bg-blue-950 text-white rounded-xl shadow-lg border border-[5px] border-blue-800">
-            {items.length > 0 && items.map((item, index) => (
-                <FavoritesCard key={index} {...item} />
-            ))}
+    return (
+        <div className="min-h-screen py-12 px-4 sm:px-8 bg-slate-700">
+            <div className="max-w-6xl mx-auto">
+                <h1 className="text-4xl text-white font-bold mb-6">Favoritos</h1>
+
+                {items.length === 0 ? (
+                    <div className="text-white/80">Nenhum item salvo ainda.</div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {items.map((item, index) => (
+                            <FavoritesCard key={index} {...item} />
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
-    </div>
+    )
 }

@@ -64,54 +64,66 @@ export default function Translate() {
             useStore.getState().loadFromStorage()
         }
     }, [])
+    return (
+        <div className="flex flex-col md:max-w-4xl mx-auto my-6 p-4 md:p-6 lg:p-8 text-slate-100 rounded-xl shadow-lg bg-gradient-to-br from-slate-800/60 to-slate-700/50">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                    <div className="text-sm text-slate-300">Idioma detectado</div>
+                    <div className="font-medium text-slate-100 bg-slate-700/30 px-3 py-1 rounded-md">{detectedLanguage}</div>
+                </div>
 
-    return <div className="flex flex-col md:max-w-4xl mx-auto my-4 p-4 bg-blue-950 text-white rounded-xl shadow-lg border border-[5px] border-blue-800">
-        <div className="flex w-full gap-4 justify-between p-2 items-center">
-            <span>Idioma Detectado:</span>
-            <span>Idioma de Destino:</span>
-        </div>
-        <div className="flex w-full gap-4 justify-between p-2 items-center">
-            <span>{detectedLanguage}</span>
-            <select
-                value={target}
-                onChange={(e) => setTarget(e.target.value)}
-                className="p-3 bg-gray-50 border border-gray-200 rounded-lg appearance-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
-            >
-                {[...languages]
-                    .sort((a, b) => a.readableName.localeCompare(b.readableName))
-                    .map((lang: ILanguage) => (
-                        <option key={lang.code} value={lang.code}>
-                            {lang.readableName}
-                        </option>
-                    ))}
-            </select>
-        </div>
-        <div className="flex flex-col md:flex-row gap-6">
-            <div className="flex flex-col flex-1 gap-4 w-full">
-
-                <textarea
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Digite aqui..."
-                    className="w-full h-48 p-4 bg-gray-800 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-100 placeholder-gray-400 transition-all"
-                ></textarea>
+                <div className="w-full sm:w-auto">
+                    <label className="sr-only" htmlFor="target-select">Idioma de destino</label>
+                    <select
+                        id="target-select"
+                        value={target}
+                        onChange={(e) => setTarget(e.target.value)}
+                        className="w-full sm:w-auto p-2 sm:p-3 bg-slate-700/40 border border-slate-600 rounded-lg appearance-none focus:ring-2 focus:ring-sky-400 focus:outline-none text-slate-100 font-medium cursor-pointer transition-all"
+                    >
+                        {[...languages]
+                            .sort((a, b) => a.readableName.localeCompare(b.readableName))
+                            .map((lang: ILanguage) => (
+                                <option key={lang.code} value={lang.code}>
+                                    {lang.readableName}
+                                </option>
+                            ))}
+                    </select>
+                </div>
             </div>
 
-            <div className="flex-1">
-                <textarea
-                    value={result}
-                    readOnly
-                    placeholder="Tradução aparecerá aqui..."
-                    className="w-full h-48 p-4 bg-blue-800 border border-blue-100 rounded-lg resize-none text-blue-100 focus:outline-none"
-                ></textarea>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2 w-full">
+                    <label className="text-sm text-slate-300">Texto</label>
+                    <textarea
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Digite aqui..."
+                        aria-label="Texto de entrada"
+                        className="w-full min-h-[10rem] md:min-h-[14rem] p-4 bg-slate-700/40 border border-slate-600 rounded-lg resize-none focus:ring-2 focus:ring-sky-400 focus:outline-none text-slate-100 placeholder-slate-300 transition-all duration-150 shadow-sm"
+                    ></textarea>
+                </div>
+
+                <div className="flex flex-col gap-2 w-full">
+                    <label className="text-sm text-slate-300">Tradução</label>
+                    <textarea
+                        value={result}
+                        readOnly
+                        placeholder="Tradução aparecerá aqui..."
+                        aria-label="Resultado da tradução"
+                        className="w-full min-h-[10rem] md:min-h-[14rem] p-4 bg-slate-600/30 border border-slate-500 rounded-lg resize-none text-slate-50 focus:outline-none transition-all duration-150 shadow-sm"
+                    ></textarea>
+                </div>
+            </div>
+
+            <div className="mt-5">
+                <ActionButtonsRow
+                    enableTranslateButton={input != ""}
+                    enableFavoriteButton={result.length > 0}
+                    handleTranslateButton={handleTranslateButton}
+                    handleFavoriteButton={handleFavoriteButton}
+                    handleReverseButton={handleReverseButton}
+                />
             </div>
         </div>
-
-        <ActionButtonsRow 
-        enableTranslateButton={input.length > 0 && target != "" && input != previousInput}
-        enableFavoriteButton={result.length > 0}
-        handleTranslateButton={handleTranslateButton} 
-        handleFavoriteButton={handleFavoriteButton} 
-        handleReverseButton={handleReverseButton} />
-    </div>
+    )
 }
