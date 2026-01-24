@@ -17,6 +17,7 @@ export default function Translate() {
 
     async function handleTranslateButton() {
         try {
+            setResult("");
             setState("Traduzindo...");
 
             const res = await handleTranslate({

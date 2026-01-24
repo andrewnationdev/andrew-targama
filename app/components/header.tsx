@@ -11,7 +11,7 @@ export default function Header(){
                     </div>
                     <div className="hidden sm:block">
                         <h1 className="text-xl font-semibold">Andrew Targama</h1>
-                        <div className="text-sm text-blue-200/80">Traduções rápidas e elegantes</div>
+                        <div className="text-sm text-blue-200/80">Tradutor com base em DeepL</div>
                     </div>
                 </div>
 
