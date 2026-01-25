@@ -74,7 +74,7 @@ export default function Translate() {
         }
     }, [])
     return (
-        <div className="flex flex-col md:max-w-4xl mx-auto my-6 p-4 md:p-6 lg:p-8 text-slate-100 rounded-xl shadow-lg bg-gradient-to-br from-slate-800/60 to-slate-700/50">
+        <div className="flex flex-col max-w-3xl mx-auto my-6 p-4 md:p-6 lg:p-8 text-slate-100 rounded-xl shadow-lg bg-gradient-to-br from-slate-800/60 to-slate-700/50">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                     <div className="text-sm text-slate-300">Idioma detectado</div>
