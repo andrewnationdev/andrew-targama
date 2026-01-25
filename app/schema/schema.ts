@@ -45,5 +45,45 @@ export const languages: ILanguage[] = [{
 {
     code: "pl",
     readableName: "Polonês"
+},
+{
+    code: "ru",
+    readableName: "Russo"
+},
+{
+    code: "ro",
+    readableName: "Romeno"
+},
+{
+    code: "bg",
+    readableName: "Búlgaro"
+},
+{
+    code: "ca",
+    readableName: "Catalão"
+},
+{
+    code: "es",
+    readableName: "Espanhol"
+},
+{
+    code: "gl",
+    readableName: "Galego"
+},
+{
+    code: "fa",
+    readableName: "Persa"
+},
+{
+    code: "gn",
+    readableName: "Guarani"
+},
+{
+    code: "he",
+    readableName: "Hebraico"
+},
+{
+    code: "hi",
+    readableName: "Hindi"
 }
 ]
