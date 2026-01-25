@@ -1,5 +1,7 @@
 O Targama é uma aplicação de tradução pensada para ser rápida, simples e prática. Ela oferece traduções diretamente na interface, permite salvar traduções favoritas localmente no navegador e prioriza uma experiência limpa e responsiva em dispositivos móveis e desktop. Por trás, ele usa a API do DeepL para as traduções.
 
+Para executá-lo em seu navegador ou instalá-lo como aplicação web, acesse [este link]().
+
 # Recursos
 - Tradução de texto com detecção automática de idioma.
 - Seleção de idioma de destino com suporte a várias línguas.
