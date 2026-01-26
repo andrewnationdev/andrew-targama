@@ -1,4 +1,4 @@
-export default function AboutPage(){
+export default function AboutPage() {
     return (
         <div className="min-h-screen py-12 px-4 sm:px-8 bg-slate-700">
             <div className="max-w-6xl mx-auto">
@@ -21,6 +21,9 @@ export default function AboutPage(){
 
                     <h2 className="text-lg text-white font-semibold mt-4 mb-2">Privacidade e dados</h2>
                     <p className="mb-4">Favoritos são armazenados localmente no seu navegador; o aplicativo não compartilha esses dados automaticamente.</p>
+
+                    <h2 className="text-lg text-white font-semibold mt-4 mb-2">Idiomas suportados</h2>
+                    <p className="mb-4">O Targama suporta os seguintes idiomas até o momento: Africâner, Alemão, Árabe Clássico, Búlgaro, Cantonês, Catalão, Checo, Coreano, Croata, Dinamarquês, Espanhol, Estoniano, Finlandês, Francês, Galego, Grego, Guarani, Hebraico, Hindi, Holandês, Húngaro, Indonésio, Inglês, Italiano, Japonês, Latim, Luxemburguês, Mandarim, Persa, Polonês, Português, Romeno, Russo, Tagalog, Tailandês, Vietnamita.</p>
 
                     <h2 className="text-lg text-white font-semibold mt-4 mb-2">Tecnologia</h2>
                     <p className="mb-0">Construído com Next.js, Tailwind CSS e integrações de APIs de tradução para fornecer respostas rápidas e confiáveis.</p>

@@ -20,3 +20,5 @@ Construído com Next.js, Tailwind CSS e integrações de APIs (DeepL) de traduç
 
 Os ícones utilizam a biblioteca `lucide-react` e os toasts de notificação usam `react-toastify`.
 
+# Idiomas
+O Targama suporta os seguintes idiomas atualmente: Africâner, Alemão, Árabe Clássico, Búlgaro, Cantonês, Catalão, Checo, Coreano, Croata, Dinamarquês, Espanhol, Estoniano, Finlandês, Francês, Galego, Grego, Guarani, Hebraico, Hindi, Holandês, Húngaro, Indonésio, Inglês, Italiano, Japonês, Latim, Luxemburguês, Mandarim, Persa, Polonês, Português, Romeno, Russo, Tagalog, Tailandês, Vietnamita.
