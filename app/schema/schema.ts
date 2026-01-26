@@ -40,7 +40,7 @@ export const languages: ILanguage[] = [{
 },
 {
     code: "lb",
-    readableName: "Luxemburgês"
+    readableName: "Luxemburguês"
 },
 {
     code: "pl",
@@ -85,5 +85,52 @@ export const languages: ILanguage[] = [{
 {
     code: "hi",
     readableName: "Hindi"
+},
+{    code: "hr",
+    readableName: "Croata"
+},
+{    code: "af",
+    readableName: "Africâner"
+},
+{
+    code: "cs",
+    readableName: "Checo"
+},
+{
+    code: "da",
+    readableName: "Dinamarquês"
+},
+{
+    code: "nl",
+    readableName: "Holandês"
+},
+{
+    code: "et",
+    readableName: "Estoniano"
+},
+{
+    code: "fi",
+    readableName: "Finlandês"
+},
+{
+    code: "hu",
+    readableName: "Húngaro"
+},
+{
+    code: "id",
+    readableName: "Indonésio"
+},
+{
+    code: "ko",
+    readableName: "Coreano"
+},
+{
+    code: "th",
+    readableName: "Tailandês"
+},
+{
+    code: "vi",
+    readableName: "Vietnamita"
 }
 ]
+
