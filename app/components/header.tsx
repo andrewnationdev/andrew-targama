@@ -16,17 +16,17 @@ export default function Header(){
                 </div>
 
                 <nav className="flex items-center gap-4">
-                    <Link href="/" className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/5 transition">
+                    <Link href="/" aria-role="link" title="Início" className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/5 transition">
                         <House size={20} />
                         <span className="hidden sm:inline text-sm">Início</span>
                     </Link>
 
-                    <Link href="/favorites" className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/5 transition">
+                    <Link href="/favorites" aria-role="link" title="Favoritos" className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/5 transition">
                         <Book size={20} />
                         <span className="hidden sm:inline text-sm">Favoritos</span>
                     </Link>
 
-                    <Link href="/about" className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/5 transition">
+                    <Link href="/about" aria-role="link" title="Sobre" className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/5 transition">
                         <InfoIcon size={20} />
                         <span className="hidden sm:inline text-sm">Sobre</span>
                     </Link>

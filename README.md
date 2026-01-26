@@ -19,3 +19,4 @@ Favoritos são armazenados localmente no seu navegador; o aplicativo não compar
 Construído com Next.js, Tailwind CSS e integrações de APIs (DeepL) de tradução para fornecer respostas rápidas e confiáveis. Apresenta também tipagem com TypeScript para garantir a precisão, a detecção e tratamento de erros mais críticos durante o desenvolvimento e uso do Zustand para gerenciamento de estado.
 
 Os ícones utilizam a biblioteca `lucide-react` e os toasts de notificação usam `react-toastify`.
+
