@@ -5,6 +5,10 @@ import { showSuccessToast, showErrorToast } from "../utils/utils";
 
 export default function FavoritesCard({ text, translation }: IFavoritesItem) {
     function handleDelete() {
+        const deleteConfirm = confirm("Deseja deletar este item dos favoritos? Esta operação é irreversível!")
+       
+        if(!deleteConfirm) return;
+        
         const res = removeFromFavorites({ text, translation });
 
         if (res) {
